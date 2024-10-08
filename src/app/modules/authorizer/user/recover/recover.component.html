@@ -1,0 +1,35 @@
+<div class="container__recover">
+
+  <div class="container__recover__image">
+    <div class="container__recover__logo"> </div>
+  </div>
+
+  <div class="container__recover__content">
+    <div class="container__recover__generateCcode">
+
+      <span class="container__recover__generateCcode__text bold-32 primario">Recuperar<br>contraseña</span>
+      <form [formGroup]="GenerateForm" (ngSubmit)="onSubmit()" class="container__codeform">
+
+        <mat-form-field class="input" appearance="fill">
+          <mat-label>Número de identificación</mat-label>
+          <input matInput placeholder="Número de identificación" formControlName="Id">
+        </mat-form-field>
+
+        <div class="captcha">
+          <re-captcha id="g-recaptcha" (resolved)="resolved($event)" siteKey="{{ this.keyCaptcha }}"></re-captcha>
+          <div class="error-recover" *ngIf="mostrarMensajeError">
+            Confirmación de re-Captcha es requerida
+          </div>
+        </div>
+
+        <span class="container__recover__generateCcode__text-description regular-16 primario">A tu correo electrónico o
+          número de celular registrados llegará el código de verificación.</span>
+
+        <button class="button container__recover__generateCcode__btn  regular-18" routerLinkActive="router-link-active"
+          type="submit">Obtener código</button>
+      </form>
+
+    </div>
+  </div>
+
+</div>

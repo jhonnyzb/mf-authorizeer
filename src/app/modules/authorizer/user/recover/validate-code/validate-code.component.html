@@ -1,0 +1,74 @@
+<div class="container__codevalidate">
+  <div class="container__codevalidate__image">
+    <div class="container__codevalidate__logo"> </div>
+  </div>
+  <div class="container__codevalidate__content">
+    <form [formGroup]="recoverForm" class="container__formcodevalidate" (ngSubmit)="confirmPassword()">
+
+
+      <span class="container__formcodevalidate__text regular-24 primario">Código de verificación</span>
+      <span class="container__formcodevalidate__text regular-16">Por favor escribe el código de seguridad enviado a tu
+        correo electrónico o por SMS a
+        tu teléfono</span>
+
+
+      <code-input class="custom-code-input" [isCodeHidden]="false" [codeLength]="6"
+        (codeCompleted)="onCodeCompleted($event)">
+      </code-input>
+
+      <mat-error *ngIf="emptyCode">* Escribe un código válido</mat-error>
+      <mat-error *ngIf="invalidCode">* Código inválido</mat-error>
+
+
+
+
+      <span class="container__formcodevalidate__text regular-16">El código vence en <span
+          class="container__formcodevalidate__text bold-16 primario">{{minutes}}:{{seconds}}</span>
+        minutos</span>
+
+      <div class="Autoraizer__formulario-recover-code__recover__codeText" *ngIf="showResend">
+        <span class="container__formcodevalidate__text regular-16">¿No recibiste el código?<br> <span
+            class="container__formcodevalidate__text container__formcodevalidate__resend "
+            (click)="resendCode()">Reenviar el
+            código</span></span>
+      </div>
+
+
+      <span class="container__formcodevalidate__text bold-32 ">Reestablece tu contraseña</span>
+
+      <span class="container__formcodevalidate__text regular-16 ">La clave deberá contener mínimo {{minPassword}}
+        caracteres, debe contener
+        números, letras
+        mayúsculas, minúsculas y caracteres
+        especiales (”#%&@-_$).</span>
+
+
+      <mat-form-field appearance="fill" class="input inputCode">
+        <mat-label>Nueva contraseña</mat-label>
+        <input matInput [type]="hide ? 'password' : 'text'" formControlName="Pass" placeholder="Nueva contraseña">
+        <mat-icon matSuffix (click)="hide = !hide" class="login_icon">
+          {{ hide ? 'visibility_off' : 'visibility' }}
+        </mat-icon>
+        <mat-error class="error-login" *ngIf="recoverForm.get('Pass').errors">La
+          contraseña es requerida</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="input inputCode">
+        <mat-label>Confirmar contraseña</mat-label>
+        <input matInput [type]="hide ? 'password' : 'text'" formControlName="NewPass"
+          placeholder="Confirmar contraseñasss">
+        <mat-icon matSuffix (click)="hide = !hide" class="login_icon">
+          {{ hide ? 'visibility_off' : 'visibility' }}
+        </mat-icon>
+        <mat-error class="error-login" *ngIf="recoverForm.get('NewPass').errors">La
+          contraseña es requerida</mat-error>
+      </mat-form-field>
+
+
+      <button class="button container__formcodevalidate__btn  regular-18" type="submit">Confirmar</button>
+
+
+    </form>
+
+  </div>
+</div>

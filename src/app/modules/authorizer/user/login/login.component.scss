@@ -1,0 +1,220 @@
+  //////////////////////BEM /////////////////////
+
+  .container__login {
+    display: grid;
+    grid-template-columns: 1fr;
+    width: 100%;
+    height: 100%;
+
+    &__image {
+      background-color: var(--ngx-valepro-color-background);
+      color: white;
+      padding: 20px;
+      height: 100%;
+    }
+
+    &__image--img {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 203px;
+      padding: 0;
+
+      app-background-login {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    &__rigthPart {
+      padding: 20px;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+  }
+
+  .containerForm {
+    display: flex;
+    justify-content: space-evenly;
+    height: 100%;
+    flex-direction: column;
+    align-items: center;
+
+    &__form {
+
+      &--img {
+        display: flex;
+        justify-content: center;
+        margin: 30px 0;
+        border: none;
+      }
+
+      &--logo {
+        background: var(--imagen-background-login);
+        background-size: cover;
+        background-position: unset;
+        background-repeat: round;
+        height: 100px;
+        max-height: 28em;
+        width: 100px;
+        border: none;
+      }
+    }
+
+    &__copy {
+      width: calc(100% - 10px);
+      margin: 2rem 0rem;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+    }
+
+    &__copy--img {
+      max-width: 42px;
+      width: 100%;
+      margin-right: 15px;
+    }
+
+    &__copy--text {
+      color: var(--ngx-valepro-color-secondary);
+    }
+  }
+
+
+  .containerButtons {
+    display: flex;
+    flex-direction: row;
+
+    &__button {
+      border-radius: 0px;
+      margin: 0px 2px;
+    }
+
+    &__button--bgwhite {
+      border-radius: 0px;
+      border: 1px solid var(--ngx-valepro-color-tertiary);
+      background-color: white;
+      margin: 0px 2px;
+    }
+
+  }
+
+  .containerInpus {
+    ::ng-deep .mdc-floating-label--required:not(.mdc-floating-label--hide-required-marker)::after {
+      margin-left: 1px;
+      margin-right: 0px;
+      content: "" !important;
+    }
+
+    &__input:first-child {
+      margin: 1rem 0rem 0rem 0rem;
+    }
+
+    &__input {
+      margin: 0px;
+    }
+
+    &__icon {
+      opacity: .5;
+    }
+
+
+    &__text {
+      color: var(--ngx-valepro-color-secondary);
+      width: 100%;
+      display: flex;
+      padding: 0rem 0rem .5rem 0rem;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-decoration: underline;
+    }
+
+    &__btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+
+    &__captcha {
+      text-align: center;
+      padding: .5rem 0rem;
+      display: flex;
+      flex-direction: column;
+      color: #f44336;
+
+    }
+  }
+
+  .backgroundWhite {
+    background-color: white;
+  }
+
+
+
+  ////////////////////// Media Queries estructura BEM /////////////////////
+  @media screen and (min-width: 768px) and (max-width: 1023px) {
+    .container__login {
+      grid-template-columns: 1fr 1fr;
+      overflow-y: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      height: 100%;
+    }
+
+    .containerForm {
+
+      &__copy {
+        width: calc(100% - 100px);
+      }
+    }
+
+  }
+
+  @media screen and (min-width: 1024px) {
+    .container__login {
+      grid-template-columns: 1fr 1fr;
+      overflow-y: hidden;
+    }
+
+    app-background-login {
+      min-height: 100vh;
+      max-height: 142vh;
+    }
+  }
+
+
+
+
+
+  ///////////////////////////// Modificadores de material //////////////////////////
+
+
+
+  ::ng-deep input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  input:-webkit-autofill:active,
+  textarea:-webkit-autofill,
+  textarea:-webkit-autofill:hover,
+  textarea:-webkit-autofill:focus,
+  textarea:-webkit-autofill:active,
+  select:-webkit-autofill,
+  select:-webkit-autofill:hover,
+  select:-webkit-autofill:focus,
+  select:-webkit-autofill:active {
+    background: rgba(255, 255, 255, 0) !important;
+    -webkit-box-shadow: 0 0 0 30px #dc354500 inset !important;
+    -webkit-transition: background-color 5000s ease-in-out 0s !important;
+    transition: background-color 5000s ease-in-out 0s !important;
+  }

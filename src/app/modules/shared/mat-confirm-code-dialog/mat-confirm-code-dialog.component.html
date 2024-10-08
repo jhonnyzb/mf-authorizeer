@@ -1,0 +1,21 @@
+<div class="containerDialogCustom">
+
+  <div class="containerDialogCustom__contenIcon" (click)="closeDialog()">
+  </div>
+  <mat-icon class="containerDialogCustom__icon">close</mat-icon>
+
+
+
+  <div class="containerDialogCustom__image">
+    <img class="containerDialogCustom__image-icons" [src]="dialogIcon" alt="">
+  </div>
+
+  <span class="containerDialogCustom__text bold-24 primary">
+    El código de verificación fue enviado
+  </span>
+
+
+  <span class="containerDialogCustom__text regular-18 primary">{{data.message}}</span>
+
+
+</div>

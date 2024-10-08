@@ -1,0 +1,31 @@
+<div class="container__update">
+  <div class="container__update__image">
+    <div class="container__update__logo"> </div>
+  </div>
+  <div class="container__update__content">
+
+    <form [formGroup]="GenerateForm" (ngSubmit)="onSubmit()" class="container__formUpdate">
+      <span class="container__formUpdate__text bold-32 primario">Actualizar<br>contraseña</span>
+
+      <mat-form-field class="generate_mat-form" appearance="fill" class="input">
+        <mat-label>Número de identificación</mat-label>
+        <input matInput placeholder="Número de identificación" formControlName="Id">
+        <mat-error class="error-login" *ngIf="GenerateForm.get('Id').errors">El campo es requerida</mat-error>
+      </mat-form-field>
+
+      <div class="captcha">
+        <re-captcha id="g-recaptcha" (resolved)="resolved($event)" siteKey="{{ this.keyCaptcha }}"></re-captcha>
+        <div class="error-recover" *ngIf="mostrarMensajeError">
+          Confirmación de re-Captcha es requerida
+        </div>
+      </div>
+
+      <span class="container__formUpdate__text regular-16 primario">A tu correo electrónico o número de celular
+        registrados llegará el código de verificación.</span>
+
+      <button class="button container__formUpdate__btn regular-18" routerLinkActive="router-link-active"
+        type="submit">Obtener código</button>
+    </form>
+
+  </div>
+</div>

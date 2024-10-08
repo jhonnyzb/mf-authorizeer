@@ -1,0 +1,121 @@
+<div class="container__register ">
+  <div class="container__register__image ">
+    <div class="container__register__logo"> </div>
+  </div>
+  <div class="container__register__content">
+
+    <div class="container__formRegister">
+
+
+      <form class="container__formRegister__form " [formGroup]="formRegister" *ngIf="configForm && formRegister">
+        <div class="container__formRegister__logo">
+          <div class="container__formRegister__image" alt=""></div>
+        </div>
+
+        <div class="containerButtonsRegister">
+
+          <button
+            class="containerButtonsRegister__button containerButtonsRegister__button--bgwhite button backgroundWhite"
+            type="submit" routerLink="/login">
+            <span class="regular-16">Iniciar sesión</span>
+          </button>
+
+          <button type="submit" class="containerButtonsRegister__button button ">
+            <span class="regular-16">Registrarme</span>
+          </button>
+
+        </div>
+
+
+        <div class="containerForms" *ngFor="let item of configForm.Attributes">
+          <div
+            *ngIf="item.FormAttributeId != 17 && item.FormAttributeId != 18 && item.FormAttributeId != 23 && item.FormAttributeId != 24
+            && item.FormAttributeId != 26 && item.FormAttributeId != 27 && item.FormAttributeId != 28 && item.FormAttributeId != 29 && item.FormAttributeId != 25">
+            <!-- Lista -->
+
+
+            <mat-form-field *ngIf="item.Type == 'L'" class="select">
+              <mat-label class="light-15">{{item.Label}}</mat-label>
+              <mat-select formControlName="{{item.FormAttributeId}}" [placeholder]="item.Placeholder"
+                (selectionChange)="changeListLocation(item.Name, item.FormAttributeId)" class=" light-15">
+                <mat-option *ngFor="let opt of item.listAsigned" [value]="opt.codeId">{{opt.name}}</mat-option>
+              </mat-select>
+              <mat-error *ngIf="!formRegister.get(item.FormAttributeId.toString())?.valid">
+                {{item.ErrorMessageRegularExpression}}
+              </mat-error>
+            </mat-form-field>
+
+
+
+
+            <!-- Input -->
+            <mat-form-field *ngIf="item.Type == 'E'" class="input">
+              <mat-label>{{item.Label}}</mat-label>
+              <input type="email" formControlName="{{item.FormAttributeId}}" matInput [placeholder]="item.Placeholder"
+                title="mail">
+              <mat-error class="error-login"
+                *ngIf="!formRegister.get(item.FormAttributeId.toString())?.valid || formRegister.get(item.FormAttributeId.toString())?.hasError('required')">{{item.ErrorMessageRegularExpression}}</mat-error>
+            </mat-form-field>
+
+            <!-- Input -->
+
+
+            <mat-form-field *ngIf="item.Type == 'N'" class="input" appearance="fill">
+              <mat-label class="light-15">{{item.Label}}</mat-label>
+              <input formControlName="{{item.FormAttributeId}}" [placeholder]="item.Placeholder" matInput 
+                title="{{item.Label}}" placeholder="{{item.Placeholder}}">
+              <mat-error class="error-login"
+                *ngIf="!formRegister.get(item.FormAttributeId.toString())?.valid || formRegister.get(item.FormAttributeId.toString())?.hasError('required')">{{item.ErrorMessageRegularExpression}}</mat-error>
+            </mat-form-field>
+
+
+            <!-- String  -->
+
+            <mat-form-field *ngIf="item.Type == 'S'" class="input" appearance="fill">
+              <mat-label class="light-15">{{item.Label}}</mat-label>
+              <input formControlName="{{item.FormAttributeId}}" [placeholder]="item.Placeholder" matInput
+                title="{{item.Label}}" placeholder="{{item.Placeholder}}">
+              <mat-error class="error-login"
+                *ngIf="!formRegister.get(item.FormAttributeId.toString())?.valid || formRegister.get(item.FormAttributeId.toString())?.hasError('required')">{{item.ErrorMessageRegularExpression}}</mat-error>
+            </mat-form-field>
+
+            <!-- Date -->
+
+            <mat-form-field *ngIf="item.Type == 'D'" class="input">
+              <mat-label>{{item.Label}}</mat-label>
+              <input formControlName="{{item.FormAttributeId}}" matInput [matDatepicker]="picker"
+                [placeholder]="item.Placeholder" title="fecha">
+              <mat-hint class="regular-12 primary40">DD/MM/YYYY</mat-hint>
+              <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+              <mat-error class="error-login"
+                *ngIf="!formRegister.get(item.FormAttributeId.toString())?.valid || formRegister.get(item.FormAttributeId.toString())?.hasError('required')">
+                {{item.ErrorMessageRegularExpression}}
+              </mat-error>
+            </mat-form-field>
+
+
+          </div>
+        </div>
+
+        <div class="button">
+          <span class=" regular-18" type="submit" (click)="save()">Registrarme</span>
+        </div>
+
+      </form>
+
+
+      <div class="containerForms__copy">
+        <img class="containerForms__copy--img" src="../../../../assets/img/logo-valemas.svg" alt="">
+        <div class="containerForms__copy--text">
+          <span class="regular-13">COPYRIGHT© {{ anio }} Valemas. <br>
+            <span class="italic-13 color-font">Prohibida su
+              reproducción total o parcial sin
+              autorización escrita de su
+              titular.</span></span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

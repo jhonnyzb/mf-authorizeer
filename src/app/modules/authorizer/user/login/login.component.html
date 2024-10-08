@@ -1,0 +1,82 @@
+<div class="container__login">
+  <div class="container__login__image container__login__image--img">
+    <app-background-login></app-background-login>
+  </div>
+
+  <div class="container__login__rigthPart backgroundWhite">
+    <div class="containerForm">
+
+      <form class="containerForm__form " [formGroup]="loginForm " (keydown.enter)="onKeypress($event)">
+        <div class="containerForm__form--img">
+          <div class="containerForm__form--logo" alt=""></div>
+        </div>
+
+        <div class="containerButtons" *ngIf="canRegister">
+          <button class="containerButtons__button button " type="submit">
+            <span class="regular-16">Iniciar sesión</span>
+          </button>
+          <button
+            class="containerButtons__button containerButtons__button--bgwhite button backgroundWhite"
+            (click)="goToRegister()">
+            <span class="regular-16">Registrarme</span>
+          </button>
+        </div>
+
+        <div class="containerButtons" *ngIf="!canRegister">
+          <button class="containerButtons__button button " type="submit">
+            <span class="regular-16">Iniciar sesión</span>
+          </button>
+        </div>
+
+        <div class="containerInpus">
+
+          <mat-form-field class="containerInpus__input input" appearance="fill">
+            <mat-label for="user" class="light-15">Usuario</mat-label>
+            <input id="user" type="text" formControlName="user" placeholder="Usuario" matInput class="bginput">
+            <mat-error class="error-login" *ngIf="loginForm.get('user').errors">El
+              usuario
+              es requerido</mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="containerInpus__input input" appearance="fill">
+            <mat-label>Contraseña</mat-label>
+            <input id="password" [type]="hide ? 'password' : 'text'" formControlName="password" placeholder="Contraseña"
+              autocomplete="off" matInput class="bginput">
+            <mat-icon class="containerInpus__icon" matSuffix (click)="toggleHide()"
+              [ngClass]="hide ? 'icon-eye-off' : 'icon-eye'">
+              {{ hide ? 'visibility_off' : 'visibility' }}
+            </mat-icon>
+            <mat-error class="error-login" *ngIf="loginForm.get('password').errors">La
+              contraseña es requerida</mat-error>
+          </mat-form-field>
+
+
+          <div class="containerInpus__text" routerLink="/recover"> <span class=" regular-16 primario">
+              ¿Olvidaste tu contraseña?
+            </span> </div>
+
+        </div>
+
+
+
+        <re-captcha (resolved)="resolved($event)" siteKey={{this.keyCaptcha}}></re-captcha>
+
+        <div *ngIf="submitted && (captcha == '' || this.captcha == null)">
+          <div class="containerInpus__captcha regular-12">Confirmación de re-Captcha es requerida</div>
+        </div>
+
+        <div class="button containerInpus__btn regular-18" type="submit" (click)="onSubmit()">Ingresar</div>
+
+
+      </form>
+
+      <div class="containerForm__copy">
+        <img class="containerForm__copy--img" src="../../../../assets/img/logo-valemas.svg" alt="">
+        <div class="containerForm__copy--text">
+          <span class="regular-13">{{ copyright }}</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

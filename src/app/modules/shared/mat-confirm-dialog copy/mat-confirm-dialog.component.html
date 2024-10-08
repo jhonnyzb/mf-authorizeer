@@ -1,0 +1,29 @@
+<div class="containerDialogCustomDuo">
+
+  <div class="containerDialogCustomDuo__contenIcon" (click)="closeDialog()">
+  </div>
+  <mat-icon class="containerDialogCustomDuo__icon">close</mat-icon>
+
+
+
+  <div class="containerDialogCustomDuo__image">
+    <img class="containerDialogCustomDuo__image-icons" [src]="dialogIcon" alt="">
+  </div>
+
+  <span class="containerDialogCustomDuo__text regular-18 primary">
+    {{data.message}}
+  </span>
+
+  <div class="containerDialogCustomDuo__buttons" mat-dialog-actions>
+
+    <div class="containerDialogCustomDuo__buttons-cancel  button" fooButton *ngIf="checkRouteUrl()"
+      (click)="closeDialog()">
+      <span class="regular-18 primary">Cancelar</span>
+    </div>
+
+    <div class="containerDialogCustomDuo__buttons-confirm button" fooButton (click)="confirmado()">
+      <span class="regular-18 primary">{{confirmText}}</span>
+    </div>
+
+  </div>
+</div>
